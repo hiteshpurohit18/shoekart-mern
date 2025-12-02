@@ -5,6 +5,12 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  cart: {
+    productId: mongoose.Types.ObjectId; // or any if populate is complex
+    size: number;
+    quantity: number;
+  }[];
+  orders: mongoose.Types.ObjectId[];
   matchPassword(candidate: string): Promise<boolean>;
 }
 

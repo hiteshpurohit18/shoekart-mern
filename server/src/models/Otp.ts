@@ -5,6 +5,8 @@ export interface IOtp extends Document {
   code: string;
   expiresAt: Date;
   used: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const OtpSchema: Schema = new Schema(
