@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query"; // 👈 Import keepPreviousData
 import { fetchProducts } from "./ProductService";
 import ProductCard from "./ProductCard";
 import type { Product } from "./types";
@@ -8,13 +8,11 @@ export default function ProductList({ filters }: { filters: any }) {
     data = [],
     isLoading,
     error,
-  } = useQuery({
-    // include filter in the queryKey so the query reruns when filter changes
+  } = useQuery<Product[]>({ // 👈 Explicitly type as Product[]
     queryKey: ["products", filters || "all"],
     queryFn: () => fetchProducts(filters),
-    // keepPreviousData smooths UX when switching filters
-    keepPreviousData: true,
-    // optional: short cache time while developing
+    // 👇 FIX: Use placeholderData instead of keepPreviousData
+    placeholderData: keepPreviousData, 
     staleTime: 1000 * 30,
   });
 

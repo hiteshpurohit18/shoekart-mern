@@ -84,13 +84,18 @@ export default function CartPage() {
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
         {/* LEFT: cart items */}
         <div className="space-y-4 lg:col-span-2">
-          {cart.map((item) => (
-            <CartProduct
-              key={`${item.productId}-${item.size}`}
-              item={item}
-              product={item.product}
-            />
-          ))}
+          {cart.map((item) => {
+            // 👇 FIX: Guard clause. If product is missing, don't render.
+            if (!item.product) return null;
+
+            return (
+              <CartProduct
+                key={`${item.productId}-${item.size}`}
+                item={item}
+                product={item.product}
+              />
+            );
+          })}
         </div>
 
         {/* add self-start so aside doesn't stretch */}

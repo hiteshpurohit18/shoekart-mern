@@ -103,7 +103,7 @@ export default function ProductPage() {
       toast.error("Please login to add items");
       return navigate("/login");
     }
-    if (!selectedSize && data?.sizes?.length > 0) {
+    if (!selectedSize && data?.sizes && data.sizes.length > 0) {
       return toast.error("Please select a size");
     }
 
@@ -122,7 +122,7 @@ export default function ProductPage() {
       toast.error("Please login to buy");
       return navigate("/login");
     }
-    if (!selectedSize && data?.sizes?.length > 0) {
+    if (!selectedSize && data?.sizes && data.sizes.length > 0) {
       return toast.error("Please select a size");
     }
 
