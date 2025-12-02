@@ -4,8 +4,8 @@ import {
   useContext,
   useEffect,
   useState,
-  ReactNode,
 } from "react";
+import type { ReactNode } from "react";
 import toast from "react-hot-toast";
 
 import {
