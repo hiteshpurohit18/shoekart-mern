@@ -1,4 +1,5 @@
 export interface Product {
+  _id: string;
   sku: string;
   name: string;
   brand: string;
@@ -12,4 +13,6 @@ export interface Product {
   description: string;
   slug: string;
   trending: boolean;
+  updatedAt?: string;
+  stock?: number;
 }

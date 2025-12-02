@@ -10,7 +10,8 @@ export default function OrdersPage() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["orders", user?._id],
+    // 👇 Fixed: Changed user?._id to user?.id
+    queryKey: ["orders", user?.id],
     queryFn: fetchOrders,
     enabled: !!user,
     staleTime: 1000 * 30,

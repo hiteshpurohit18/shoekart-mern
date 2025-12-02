@@ -68,24 +68,20 @@ export default function Signup() {
         password: form.password,
       });
 
-      // If backend returned token + user, auto-login
-      const token = res?.data?.token ?? res?.token ?? undefined;
-      const user = res?.data?.user ?? res?.user ?? undefined;
+      // 👇 Fixed: Access .data explicitly
+      const token = res.data.token;
+      const user = res.data.user;
 
       if (token && user) {
-        // save token for api interceptor and login in context
         try {
           localStorage.setItem("token", token);
         } catch (err) {
-          // ignore localStorage errors
           console.error("Failed to store token", err);
         }
 
-        // Use AuthContext login function that accepts (user, token)
         try {
           login(user, token);
         } catch (err) {
-          // in case your login signature is different, try login with user only
           try {
             login(user);
           } catch {
@@ -98,10 +94,7 @@ export default function Signup() {
         return;
       }
 
-      // fallback if backend didn't return token/user
       toast.success("Signup successful.");
-
-      // Reset to step 1 or clear form (keeps same UI behavior as before)
       setStep(1);
       setEmail("");
       setOtp("");

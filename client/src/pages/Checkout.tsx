@@ -71,7 +71,7 @@ export default function Checkout() {
   const [line2, setLine2] = useState("");
   const [city, setCity] = useState("");
   const [stateField, setStateField] = useState("");
-  const [country, setCountry] = useState("India");
+  const [country] = useState("India");
 
   // payment
   const [selectedPayment, setSelectedPayment] = useState<
