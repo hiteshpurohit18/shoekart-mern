@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #ff6b00;
+  --muted: #666;
+}
+
+body {
+  font-family: Inter, system-ui, Arial;
+  margin: 0;
+  padding: 0;
+  color: #111;
+  background: #fafafa;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.25s ease-in forwards;
+}
+
